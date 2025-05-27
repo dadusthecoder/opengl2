@@ -139,7 +139,7 @@ void testModel::onImguiRnder()
 	}
 
 	ImGui::SeparatorText("Load Assets");
-	static char modelPath[256] = "res/models/Sphere.fbx";
+	static char modelPath[256] = "res/modles/sopnza_palace/scene.gltf";
 	ImGui::InputText("Model Path", modelPath, IM_ARRAYSIZE(modelPath));
 	if (ImGui::Button("Load Model")) {
 		std::string newPath(modelPath);
