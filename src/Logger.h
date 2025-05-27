@@ -77,7 +77,7 @@ private:
 
     std::string FormatLogMessage(LogLevel level, const std::string& message) {
         std::ostringstream oss;
-        oss << "[" << GetCurrentTime() << "] [" << LogLevelToString(level) << "] " << message;
+        oss << "[" << GetCurrentTime() << "] [" << LogLevelToString(level) << "]   " << message;
         return oss.str();
     }
 
@@ -102,7 +102,7 @@ private:
         switch (level) {
         case LogLevel::DEBUG: return "DEBUG";
         case LogLevel::_INFO: return "INFO";
-        case LogLevel::_WARNING: return "WARNING";
+        case LogLevel::_WARNING: return "WARN";
         case LogLevel::_ERROR: return "ERROR";
         case LogLevel::_IMP: return "IMP";
         default: return "UNKNOWN";
