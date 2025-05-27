@@ -144,6 +144,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <None Include=".gitattributes" />
+    <None Include=".gitignore" />
     <None Include="Dependencies\ASSIMP\include\assimp\color4.inl" />
     <None Include="Dependencies\ASSIMP\include\assimp\config.h.in" />
     <None Include="Dependencies\ASSIMP\include\assimp\material.inl" />
@@ -154,6 +156,7 @@
     <None Include="Dependencies\ASSIMP\include\assimp\vector2.inl" />
     <None Include="Dependencies\ASSIMP\include\assimp\vector3.inl" />
     <None Include="imgui.ini" />
+    <None Include="README.md" />
     <None Include="res\shaders\bsc.shader" />
     <None Include="res\shaders\Fabric.shader" />
     <None Include="src\External\glm\detail\func_common.inl" />

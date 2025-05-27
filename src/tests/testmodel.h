@@ -44,7 +44,7 @@ private:
 
     RenderMode m_renderMode = RenderMode::WIREFRAME;
     GLFWwindow* m_window = nullptr;
-    float m_speed = 0.1;
+    float m_speed ;
 
    ImGuizmo::OPERATION m_guizmoOp = ImGuizmo::TRANSLATE;
 
