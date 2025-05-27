@@ -73,20 +73,20 @@ The long-term goal is to evolve this project into a **Physically Based Renderer 
    bash: git clone https://github.com/dadusthecoder/opengl2.git
 
 2. Open the .sln file in Visual Studio 2022.
-   Make sure the following directories are linked properly:
-   /Dependencies ( GLFW, GLEW,Assimp)
-   /src/External( glm , imGui)
-   /res (Shaders, models)
+  - Make sure the following directories are linked properly:
+  - /Dependencies ( GLFW, GLEW,Assimp)
+  - /src/External( glm , imGui)
+  - /res (Shaders, models)
 
  3. Build and Run.
  
 
 ### Controls and UI
-   Use mouse and WASD keys to navigate the camera.
-   Use the ImGui panel to:
-   Change model position, rotation, scale
-   Toggle gravity
-   Change light position and color
-   Reload shaders or models in real-time
+  - Use mouse and WASD keys to navigate the camera.
+  - Use the ImGui panel to:
+  - Change model position, rotation, scale
+  - Toggle gravity
+  - Change light position and color
+  - Reload shaders or models in real-time
 
 
