@@ -5,6 +5,8 @@ This project is an **experimental renderer** built with **C++ and OpenGL**, crea
 The long-term goal is to evolve this project into a **Physically Based Renderer (PBR)** from scratch. For now, it serves as a sandbox for experimenting with rendering techniques, shaders, and scene management systems.
 
 ---
+## screenshots
+![Image](https://github.com/user-attachments/assets/488a5f97-6180-4530-9470-11fa5bdac939)
 
 ## 📸 Current Features (Experimental)
 
@@ -50,10 +52,10 @@ The long-term goal is to evolve this project into a **Physically Based Renderer 
 
 ## 🧱 Tech Stack
 
-| Component       | Library Used       |
-|----------------|--------------------|
-| **Graphics API**       | OpenGL (Core Profile)     |
-| **GUI**                | [Dear ImGui](https://github.com/ocornut/imgui)       |
+| Component              |                  Tool used                          |
+|------------------------|-----------------------------------------------------|
+| **Graphics API**       | OpenGL (Core Profile)                               |
+| **GUI**                | [Dear ImGui](https://github.com/ocornut/imgui)      |
 | **Windowing/Input**    | [GLFW](https://github.com/glfw/glfw)                |
 | **Model Loading**      | [Assimp](https://github.com/assimp/assimp)          |
 | **Math**               | [GLM](https://github.com/g-truc/glm)                |
@@ -73,10 +75,10 @@ The long-term goal is to evolve this project into a **Physically Based Renderer 
    bash: git clone https://github.com/dadusthecoder/opengl2.git
 
 2. Open the .sln file in Visual Studio 2022.
-  - Make sure the following directories are linked properly:
-  - /Dependencies ( GLFW, GLEW,Assimp)
-  - /src/External( glm , imGui)
-  - /res (Shaders, models)
+  - Make sure the following directories are linked properly using vcpkg or you can link them manully:
+  - /Dependencies ( GLFW,GLEW,Assimp ,glm , imGui)
+  ## resources
+  - /res (Shaders, models) 
 
  3. Build and Run.
  
@@ -89,4 +91,4 @@ The long-term goal is to evolve this project into a **Physically Based Renderer 
   - Change light position and color
   - Reload shaders or models in real-time
 
-
+  
