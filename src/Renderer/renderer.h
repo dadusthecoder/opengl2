@@ -1,7 +1,15 @@
 #pragma once
+#include<iostream>
+#include<memory>
 
 #include<GL/glew.h>
 #include <GLFW/glfw3.h>
+
+#include<imgui.h>
+#include<imgui_impl_opengl3.h>
+#include<ImGuizmo.h>
+#include<imgui_impl_glfw.h>
+
 #define GLM_ENABLE_EXPERIMENTAL 
 #include<glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp> // For transformations like translate, rotate, perspective 
@@ -9,15 +17,6 @@
 #include <glm/gtx/vector_angle.hpp>
 #include <glm/gtc/type_ptr.hpp>
 #include <glm/gtx/matrix_decompose.hpp>
-
-
-#include<imgui.h>
-#include<imgui_impl_opengl3.h>
-#include<ImGuizmo.h>
-#include<imgui_impl_glfw.h>
-
-#include<iostream>
-#include<memory>
 
 #include"Logger.h"
 #include"VertexBuffer.h"
