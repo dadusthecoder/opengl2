@@ -1,4 +1,4 @@
-//#include"tests/testLightning.h"
+
 #include"Logger.h"
 #include"tests/testmodel.h"
 
@@ -27,7 +27,7 @@ MAIN
 
 	/* Make the window's context current */
 	glfwMakeContextCurrent(window);
-	glfwSwapInterval(1);
+	glfwSwapInterval(0);
 	if (glewInit() != GLEW_OK)
        Logger::GetInstance().Log(LogLevel::_ERROR, "Failed to initialize GLEW"); 
 	
