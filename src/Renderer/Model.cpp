@@ -1,8 +1,11 @@
+#include<filesystem>
 #include "Model.h"
 
 // Constructor
-Model::Model(const std::string& filepath)
+Model::Model(const std::string& filepath):m_ModelFilepath(filepath)
 {
+    
+    m_TextureFilePath = std::filesystem::path(filepath).parent_path().string();
     Assimp::Importer importer;
     const aiScene* scene = importer.ReadFile(
         filepath,
@@ -25,7 +28,7 @@ Model::Model(const std::string& filepath)
 
     // Logging import success
     LOG(LogLevel::DEBUG, "Model imported successfully: " + filepath);
-    LOG(LogLevel::DEBUG, "Number of meshes: " + std::to_string(scene->mNumMeshes));
+    LOG(LogLevel::DEBUG, "Number of m_Meshes: " + std::to_string(scene->mNumMeshes));
     LOG(LogLevel::DEBUG, "Loading model...");
     LOG(LogLevel::DEBUG, "Processing root node...");
 
@@ -40,9 +43,9 @@ void Model::cleanUp()
 {
     LOG(LogLevel::DEBUG, "Destroying model");
 
-    for (size_t i = 0; i < meshes.size(); ++i)
+    for (size_t i = 0; i < m_Meshes.size(); ++i)
     {
-        meshes[i].cleanUp();
+        m_Meshes[i].cleanUp();
     }
 
     LOG(LogLevel::DEBUG, "Model destroyed");
@@ -88,7 +91,7 @@ Material Model::LoadMaterial(aiMaterial* M) const
     else
     {
         LOG(LogLevel::_WARNING, "Ambient color not found. Defaulting to (0, 0, 0).");
-        material.ambient = glm::vec3(0.50f);
+        material.ambient = glm::vec3(.0f);
     }
 
     // Shininess
@@ -144,7 +147,7 @@ Mesh Model::processMesh(const aiMesh* mesh, const aiScene* scene)
             v.tangent = glm::vec3(mesh->mTangents[i].x, mesh->mTangents[i].y, mesh->mTangents[i].z);
         else
             v.tangent = glm::vec3(0.0f);
-
+        
         // Bitangents
         if (mesh->HasTangentsAndBitangents())
             v.bitangent = glm::vec3(mesh->mBitangents[i].x, mesh->mBitangents[i].y, mesh->mBitangents[i].z);
@@ -188,7 +191,7 @@ Mesh Model::processMesh(const aiMesh* mesh, const aiScene* scene)
             {
                 aiString str;
                 M->GetTexture(type, i, &str);
-                std::string texturePath = "res/modles/sopnza_palace/"+std::string(str.C_Str());
+                std::string texturePath = m_TextureFilePath+"/"+std::string(str.C_Str());
                 Textures.push_back(std::make_shared<Texture>(texturePath));
                 LOG(LogLevel::_INFO, "Loaded " + std::to_string(i+1) +
                     " texture of type " + std::to_string(static_cast<int>(type)) +
@@ -216,16 +219,16 @@ void Model::processNode(const aiNode* node, const aiScene* scene)
 {
     std::string nodeInfo =
         "Node: " + std::string(node->mName.C_Str()) +
-        " | Meshes: " + std::to_string(node->mNumMeshes) +
+        " | m_Meshes: " + std::to_string(node->mNumMeshes) +
         " | Children: " + std::to_string(node->mNumChildren);
 
     LOG(LogLevel::_INFO, nodeInfo);
 
-    // Process all meshes for this node
+    // Process all m_Meshes for this node
     for (unsigned int i = 0; i < node->mNumMeshes; ++i)
     {
         aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
-        meshes.push_back(processMesh(mesh, scene));
+        m_Meshes.push_back(processMesh(mesh, scene));
     }
 
     // Recursively process each child node
@@ -238,8 +241,8 @@ void Model::processNode(const aiNode* node, const aiScene* scene)
 // Render the model
 void Model::Render(const shader& Shader)
 {
-    for (size_t i = 0; i < meshes.size(); ++i)
+    for (size_t i = 0; i < m_Meshes.size(); ++i)
     {
-        meshes[i].render(Shader);
+        m_Meshes[i].render(Shader);
     }
 }

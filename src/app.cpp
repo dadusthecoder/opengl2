@@ -11,7 +11,7 @@ int main(void)
 	if (!glfwInit())
 		return -1;
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	float height = 1080, width = 1920;
 
@@ -32,7 +32,7 @@ int main(void)
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();(void)io;
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
-	ImGui_ImplOpenGL3_Init("# version 440");
+	ImGui_ImplOpenGL3_Init("# version 450");
     
 	//gl settings
 	glEnable(GL_CULL_FACE);
