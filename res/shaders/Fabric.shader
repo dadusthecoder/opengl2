@@ -21,6 +21,7 @@ void main()
 
     gl_Position = u_matp * u_matv * vec4(displaced, 1.0);
 }
+
 #shader Fragment
 #version 440 core
 
@@ -42,3 +43,4 @@ void main()
 
     FragColor = vec4(baseColor,fade);
 }
+

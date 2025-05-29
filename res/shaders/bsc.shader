@@ -31,6 +31,7 @@ void main() {
 }
 
 
+
 #shader Fragment
 #version 450 core
 
@@ -70,7 +71,7 @@ void main() {
 
     vec3 viewDir = normalize(u_viewp - FragPos);
     vec3 reflectDir = reflect(-lightDir, normal);
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0),500);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0),5);
     vec3 specular = spec * material.specular;
 
     //float SpecularMap = texture(u_Texture1 , TextCoord).r;
@@ -85,4 +86,5 @@ void main() {
         color = DiffuseMap * lighting;
     }
 }
+
 

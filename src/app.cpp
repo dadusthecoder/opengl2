@@ -20,7 +20,7 @@ MAIN
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	float height = 1080, width = 1920;
 
-	window = glfwCreateWindow(width,height,"xpbd", NULL, NULL);
+	window = glfwCreateWindow(width,height,"Lightnig", NULL, NULL);
 	/* Create a windowed mode window and its OpenGL context */
 	if (!window)
 		return -1;
