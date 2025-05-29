@@ -129,13 +129,13 @@ void testModel::onImguiRnder()
 	ImGui::SeparatorText("Model Controls");
 	if (ImGui::CollapsingHeader("Transformations", ImGuiTreeNodeFlags_DefaultOpen)) {
 		ImGui::DragFloat3("Position", &modelPosition[0], 0.1f, -100.0f, 100.0f);
-		ImGui::SameLine(); if (ImGui::Button("Reset")) modelPosition = glm::vec3(0.0f);
+		ImGui::SameLine(); if (ImGui::Button("ResetPos")) modelPosition = glm::vec3(0.0f);
 
 		ImGui::DragFloat3("Rotation", &modelRotation[0], 0.5f, -180.0f, 180.0f);
-		ImGui::SameLine(); if (ImGui::Button("Reset")) modelRotation = glm::vec3(0.0f);
+		ImGui::SameLine(); if (ImGui::Button("ResetRot")) modelRotation = glm::vec3(0.0f);
 
 		ImGui::DragFloat3("Scale   ", &modelScale[0], 0.1f, 0.01f, 20.0f);
-		ImGui::SameLine(); if (ImGui::Button("Reset")) modelScale = glm::vec3(1.0f);
+		ImGui::SameLine(); if (ImGui::Button("ResetSca")) modelScale = glm::vec3(1.0f);
 	}
 
 	ImGui::SeparatorText("Load Assets");

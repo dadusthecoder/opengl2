@@ -11,7 +11,9 @@ public:
 	 void Render(const shader& Shader);
 	 
 private:
-	std::vector<Mesh>meshes;
+	 std::string m_TextureFilePath;
+	const std::string m_ModelFilepath;
+	std::vector<Mesh>m_Meshes;
 	Material LoadMaterial(aiMaterial* M) const;
 	Mesh processMesh(const aiMesh* mesh, const aiScene* scene);
 	void processNode(const aiNode* node,const aiScene* scene);

@@ -1,17 +1,22 @@
 //#include"tests/testLightning.h"
-#include"tests/testmodel.h"
 #include"Logger.h"
+#include"tests/testmodel.h"
 
+#ifdef LGT_DEBUG
+#define MAIN int main()
+#else
+#define MAIN int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nShowCmd)
+#endif 
 
-int main(void)
-{
+MAIN
+ {
 	GLFWwindow* window;
 	Logger::GetInstance().Init();
 	/* Initialize the library */
 	if (!glfwInit())
 		return -1;
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 4);
+	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 5);
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 	float height = 1080, width = 1920;
 
@@ -32,7 +37,7 @@ int main(void)
 	ImGui::CreateContext();
 	ImGuiIO& io = ImGui::GetIO();(void)io;
 	ImGui_ImplGlfw_InitForOpenGL(window, true);
-	ImGui_ImplOpenGL3_Init("# version 440");
+	ImGui_ImplOpenGL3_Init("# version 450");
     
 	//gl settings
 	glEnable(GL_CULL_FACE);

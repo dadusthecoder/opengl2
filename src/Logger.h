@@ -101,10 +101,10 @@ private:
     std::string LogLevelToString(LogLevel level) {
         switch (level) {
         case LogLevel::DEBUG: return "DEBUG";
-        case LogLevel::_INFO: return "INFO";
-        case LogLevel::_WARNING: return "WARN";
+        case LogLevel::_INFO: return "_INFO";
+        case LogLevel::_WARNING: return "_WARN";
         case LogLevel::_ERROR: return "ERROR";
-        case LogLevel::_IMP: return "IMP";
+        case LogLevel::_IMP: return "__IMP";
         default: return "UNKNOWN";
         }
     }
@@ -126,7 +126,7 @@ private:
 };
 
 
-#ifndef NDEBUG
+#ifdef LGT_DEBUG
 #define LOG(level, message) Logger::GetInstance().Log(level, message)
 #else
 #define LOG(level, message) 
