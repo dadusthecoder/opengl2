@@ -28,7 +28,7 @@ testModel::testModel() :m_speed(0.030f)
 	model = glm::mat4(1.0f);
 	m_render = std::make_unique<renderer>();
 	m_render->logGlVersion();
-	m_model  = std::make_unique<Model>("res/modles/sopnza_palace/scene.gltf");
+	m_model  = std::make_unique<Model>("res/modles/Sphere.fbx");
 	m_shader = std::make_unique<shader>("res/shaders/bsc.shader");
 	m_camera = std::make_unique<camera>(800.0f, 800.0f, viewp);
 }

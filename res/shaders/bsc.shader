@@ -32,6 +32,7 @@ void main() {
 
 
 
+
 #shader Fragment
 #version 450 core
 
@@ -51,8 +52,8 @@ struct Material {
 
 // Uniforms
 uniform sampler2D u_Texture0;       // Diffuse map
-//uniform sampler2D u_Texture1;       // Specular map
-uniform sampler2D u_Texture1;       // Normal map
+uniform sampler2D u_Texture1;       // Specular map
+uniform sampler2D u_Texture2;       // Normal map
 uniform Material material;
 uniform bool u_usec;
 uniform vec3 u_color;
@@ -61,7 +62,7 @@ uniform vec3 u_viewp;
 
 void main() {
     // Sample normal map and convert from [0,1] to [-1,1]
-    vec3 normalMap = texture(u_Texture1, TextCoord).rgb;
+    vec3 normalMap = texture(u_Texture2, TextCoord).rgb;
     vec3 normal = normalize(normalMap * 2.0 - 1.0); // Tangent space normal
     normal = normalize(TBN * normal);               // World space normal
 
@@ -71,13 +72,13 @@ void main() {
 
     vec3 viewDir = normalize(u_viewp - FragPos);
     vec3 reflectDir = reflect(-lightDir, normal);
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0),5);
+    float spec = pow(max(dot(viewDir, reflectDir), 0.0),material.shininess);
     vec3 specular = spec * material.specular;
 
-    //float SpecularMap = texture(u_Texture1 , TextCoord).r;
+    float SpecularMap = texture(u_Texture1 , TextCoord).r;
     vec3 ambient = 0.1 * material.ambient;
 
-    vec4 lighting = vec4(u_color * (ambient + diffuse + specular), 1.0);
+    vec4 lighting = vec4(u_color * (ambient + diffuse + SpecularMap*specular), 1.0);
     vec4 DiffuseMap = texture(u_Texture0, TextCoord);
 
     if (u_usec) {
@@ -86,5 +87,6 @@ void main() {
         color = DiffuseMap * lighting;
     }
 }
+
 
 
